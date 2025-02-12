@@ -61,9 +61,9 @@ class Ventana(Frame):
         self.frame_dos.rowconfigure(0, weight=1)
 
         Button(self.frame_titulo, text='REGRESAR', font = ('Arial', 9, 'bold'), command=salir_ventas, fg='black', bg = '#C3C3C3', width=20, bd=3).grid(column=0, row=0, pady=5)
-        Button(self.frame_titulo, text='PRONOSTICO', font = ('Arial', 9, 'bold'), command=ir_pronostico, fg='black', bg = '#FEBD03', width=20, bd=3).grid(column=2, row=0, pady=5)
-        Button(self.frame_titulo, text='TICKETS', font = ('Arial', 9, 'bold'), command=ir_tickets, fg='black', bg = '#2E53F9', width=20, bd=3).grid(column=3, row=0, pady=5)
-        Button(self.frame_titulo, text='HISTORIAL VENTAS', font = ('Arial', 9, 'bold'), command=ir_historial, fg='black', bg = '#F8FF1C', width=20, bd=3).grid(column=4, row=0, pady=5)
+        Button(self.frame_titulo, text='PRONOSTICO', font = ('Arial', 9, 'bold'), command=ir_pronostico, fg='black', bg = '#C3C3C3', width=20, bd=3).grid(column=2, row=0, pady=5)
+        Button(self.frame_titulo, text='TICKETS', font = ('Arial', 9, 'bold'), command=ir_tickets, fg='black', bg = '#C3C3C3', width=20, bd=3).grid(column=3, row=0, pady=5)
+        Button(self.frame_titulo, text='HISTORIAL VENTAS', font = ('Arial', 9, 'bold'), command=ir_historial, fg='black', bg = '#C3C3C3', width=20, bd=3).grid(column=4, row=0, pady=5)
         Label(self.frame_titulo, text= 'Ventas', bg='#E0E0E0', fg='black', font=('Kaufmann BT', 28, 'bold')).grid(columnspan=5, column=0, row=1, pady=5)
 
         Label(self.frame_uno, text= 'Opciones', bg='#E0E0E0', fg='black', font=('Kaufmann BT', 13, 'bold')).grid(column=2, row=0)
