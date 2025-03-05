@@ -31,9 +31,9 @@ class Ventana(Frame):
         self.widgets()
 
     def widgets(self):
-        self.frame_titulo = Frame(self.master, bg="#D29AFE", height=200, width=800)
+        self.frame_titulo = Frame(self.master, bg="#E0E0E0", height=200, width=800)
         self.frame_titulo.grid(column=0, row=0, sticky='nsew')
-        self.frame_dos = Frame(self.master, bg="#E6C5FF", height=300, width=800)
+        self.frame_dos = Frame(self.master, bg="#E0E0E0", height=300, width=800)
         self.frame_dos.grid(column=0, row=2, sticky='nsew')
 
         self.frame_titulo.columnconfigure([0,1,2,3,4], weight=1)
@@ -42,14 +42,14 @@ class Ventana(Frame):
         self.frame_dos.rowconfigure(0, weight=1)
 
         Button(self.frame_titulo, text='REGRESAR', font = ('Arial', 9, 'bold'), command=salir_historial, fg='black', bg = '#C3C3C3', width=20, bd=3).grid(column=0, row=0, pady=5)
-        Button(self.frame_titulo, text='EXPORTAR EXCEL', font = ('Arial', 9, 'bold'), command=self.guardar_datos, fg='black', bg = '#FEBD03', width=20, bd=3).grid(column=2, row=0, pady=5)
-        Label(self.frame_titulo, text= 'Historial Ventas', bg='#D29AFE', fg='black', font=('Kaufmann BT', 28, 'bold')).grid(columnspan=5, column=0, row=1, pady=5)
+        Button(self.frame_titulo, text='EXPORTAR EXCEL', font = ('Arial', 9, 'bold'), command=self.guardar_datos, fg='white', bg = 'midnightblue', width=20, bd=3).grid(column=2, row=0, pady=5)
+        Label(self.frame_titulo, text= 'Historial Ventas', bg='#E0E0E0', fg='black', font=('Kaufmann BT', 28, 'bold')).grid(columnspan=5, column=0, row=1, pady=5)
 
        
         estilo_tabla = ttk.Style()
         estilo_tabla.configure("Treeview", font= ('Helvetica', 10, 'bold'), foreground='black', background='white')
-        estilo_tabla.map('Treeview', background=[('selected', 'deep sky blue')], foreground=[('selected','black')] )
-        estilo_tabla.configure('Heading', background='white', foreground='#357CF1', padding=3, font=('Arial', 10, 'bold'))
+        estilo_tabla.map('Treeview', background=[('selected', 'midnightblue')], foreground=[('selected','white')] )
+        estilo_tabla.configure('Heading', background='#C3C3C3', foreground='#357CF1', padding=3, font=('Arial', 10, 'bold'))
 
         self.tabla = ttk.Treeview(self.frame_dos)
         self.tabla.grid(column=0, row=0, sticky='nsew')

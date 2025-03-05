@@ -16,10 +16,6 @@ def salir_ventas():
 def ir_pronostico():
     ventana.destroy()
     pronostico.mostrar_pronostico()
-
-def ir_tickets():
-    ventana.destroy()
-    tickets.mostrar_tickets()
     
 def ir_historial():
     ventana.destroy()
@@ -60,10 +56,10 @@ class Ventana(Frame):
         self.frame_dos.columnconfigure(0, weight=1)
         self.frame_dos.rowconfigure(0, weight=1)
 
-        Button(self.frame_titulo, text='REGRESAR', font = ('Arial', 9, 'bold'), command=salir_ventas, fg='black', bg = '#C3C3C3', width=20, bd=3).grid(column=0, row=0, pady=5)
+        Button(self.frame_titulo, text='REGRESAR', font = ('Arial', 9, 'bold'), command=salir_ventas, fg='black', bg = '#C3C3C3', width=20, bd=3).grid(column=1, row=0, pady=5)
         Button(self.frame_titulo, text='PRONOSTICO', font = ('Arial', 9, 'bold'), command=ir_pronostico, fg='black', bg = '#C3C3C3', width=20, bd=3).grid(column=2, row=0, pady=5)
-        Button(self.frame_titulo, text='TICKETS', font = ('Arial', 9, 'bold'), command=ir_tickets, fg='black', bg = '#C3C3C3', width=20, bd=3).grid(column=3, row=0, pady=5)
-        Button(self.frame_titulo, text='HISTORIAL VENTAS', font = ('Arial', 9, 'bold'), command=ir_historial, fg='black', bg = '#C3C3C3', width=20, bd=3).grid(column=4, row=0, pady=5)
+        Button(self.frame_titulo, text='HISTORIAL VENTAS', font = ('Arial', 9, 'bold'), command=ir_historial, fg='black', bg = '#C3C3C3', width=20, bd=3).grid(column=3, row=0, pady=5)
+        
         Label(self.frame_titulo, text= 'Ventas', bg='#E0E0E0', fg='black', font=('Kaufmann BT', 28, 'bold')).grid(columnspan=5, column=0, row=1, pady=5)
 
         Label(self.frame_uno, text= 'Opciones', bg='#E0E0E0', fg='black', font=('Kaufmann BT', 13, 'bold')).grid(column=2, row=0)
@@ -84,14 +80,13 @@ class Ventana(Frame):
         self.combo_platillo.grid(row=1, column=1)
         self.nombre = self.combo_platillo.get()
 
-        #BOTONES DE FUNCIONES DE LA DERECHA
         Button(self.frame_uno, text='AGREGAR A ORDEN', font= ('Arial', 9, 'bold'), bg= 'midnightblue', fg='white', width=20, bd=3, command=self.agregar_orden).grid(column=2, row=1, pady=5, padx=5)
         Button(self.frame_uno, text='LIMPIAR CAMPOS', font= ('Arial', 9, 'bold'), bg= 'midnightblue', fg='white', width=20, bd=3, command=self.limpiar_campos).grid(column=2, row=2, pady=5, padx=5)
         Button(self.frame_uno, text='FINALIZAR COMPRA', font= ('Arial', 9, 'bold'), bg= 'midnightblue',fg='white', width=20, bd=3, command=self.finalizar_compra).grid(column=2, row=3, pady=5, padx=5)
 
         estilo_tabla = ttk.Style()
-        estilo_tabla.configure("Treeview", font= ('Helvetica', 10, 'bold'), foreground='black', background='#78A8F6')
-        estilo_tabla.map('Treeview', background=[('selected', 'deep sky blue')], foreground=[('selected','black')] )
+        estilo_tabla.configure("Treeview", font= ('Helvetica', 10, 'bold'), foreground='black', background='white')
+        estilo_tabla.map('Treeview', background=[('selected', 'midnightblue')], foreground=[('selected','white')] )
         estilo_tabla.configure('Heading', background='white', foreground='#357CF1', padding=3, font=('Arial', 10, 'bold'))
 
         self.tabla = ttk.Treeview(self.frame_dos)
@@ -153,7 +148,7 @@ class Ventana(Frame):
         self.etiquetaTotal.config(text='Total a pagar: ${}'.format(self.total),  bg='white', fg='black', font=('Kaufmann BT', 18, 'bold'), bd=3, relief='groove', highlightbackground="black", highlightthickness=1, padx=5, pady=5)
         self.tabla.delete(*self.tabla.get_children())
         messagebox.showinfo("Compra Finalizada", "Compra realizada con éxito")
-        self.generar_ticket()  # Llama a la función para generar el ticket después de finalizar la compra
+        #self.generar_ticket()  # Llama a la función para generar el ticket después de finalizar la compra
 
     def obtener_fila(self,event):
         item = self.tabla.focus()

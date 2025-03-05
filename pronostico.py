@@ -1,14 +1,13 @@
 import tkinter as tk
 from tkinter import messagebox
+from datetime import datetime
 import csv
 import random
-from datetime import datetime  # Importa el módulo datetime
 import ventas
 
 def salir_pronostico():
     root.destroy()
     ventas.mostrar_ventas()
-
 
 class ProgramaPrincipal:
     def __init__(self, root, guisos):
@@ -18,54 +17,54 @@ class ProgramaPrincipal:
         self.guisos = guisos
         
         # Cambia el color de fondo de la ventana principal
-        self.root.configure(bg="purple")
+        self.root.configure(bg="#FFFFFF")  # Fondo blanco
 
         # Creación del contenedor principal
-        self.frame = tk.Frame(root, bg="#F4F4F4")  # Cambia el color de fondo
+        self.frame = tk.Frame(root, bg="#E0E0E0")  # Fondo gris claro
         self.frame.pack(padx=10, pady=10)
 
         # Mensaje de bienvenida con la fecha actual
         self.mostrar_mensaje_bienvenida()
 
         # Etiquetas y entradas
-        self.label_nombre = tk.Label(self.frame, text="Nombre del guiso:", bg="#F4F4F4")  # Cambia el color de fondo
+        self.label_nombre = tk.Label(self.frame, text="Nombre del guiso:", bg="#E0E0E0", fg="black", font=("Arial", 12))  # Fondo gris claro, texto negro
         self.label_nombre.grid(row=1, column=0, pady=5, padx=5, sticky="w")
-        self.entry_nombre = tk.Entry(self.frame)
+        self.entry_nombre = tk.Entry(self.frame, font=("Arial", 12))
         self.entry_nombre.grid(row=1, column=1, pady=5, padx=5)
 
-        self.label_ventas = tk.Label(self.frame, text="Cantidad de ventas:", bg="#F4F4F4")  # Cambia el color de fondo
+        self.label_ventas = tk.Label(self.frame, text="Cantidad de ventas:", bg="#E0E0E0", fg="black", font=("Arial", 12))  # Fondo gris claro, texto negro
         self.label_ventas.grid(row=2, column=0, pady=5, padx=5, sticky="w")
-        self.entry_ventas = tk.Entry(self.frame)
+        self.entry_ventas = tk.Entry(self.frame, font=("Arial", 12))
         self.entry_ventas.grid(row=2, column=1, pady=5, padx=5)
 
-        self.label_perdidas = tk.Label(self.frame, text="Cantidad de pérdidas:", bg="#F4F4F4")  # Cambia el color de fondo
+        self.label_perdidas = tk.Label(self.frame, text="Cantidad de pérdidas:", bg="#E0E0E0", fg="black", font=("Arial", 12))  # Fondo gris claro, texto negro
         self.label_perdidas.grid(row=3, column=0, pady=5, padx=5, sticky="w")
-        self.entry_perdidas = tk.Entry(self.frame)
+        self.entry_perdidas = tk.Entry(self.frame, font=("Arial", 12))
         self.entry_perdidas.grid(row=3, column=1, pady=5, padx=5)
 
-        self.label_kg = tk.Label(self.frame, text="Cantidad de kg utilizados:", bg="#F4F4F4")  # Cambia el color de fondo
+        self.label_kg = tk.Label(self.frame, text="Cantidad de kg utilizados:", bg="#E0E0E0", fg="black", font=("Arial", 12))  # Fondo gris claro, texto negro
         self.label_kg.grid(row=4, column=0, pady=5, padx=5, sticky="w")
-        self.entry_kg = tk.Entry(self.frame)
+        self.entry_kg = tk.Entry(self.frame, font=("Arial", 12))
         self.entry_kg.grid(row=4, column=1, pady=5, padx=5)
 
         # Botones
-        self.btn_agregar = tk.Button(self.frame, text="Agregar guiso", command=self.agregar_guiso, bg="#4CAF50", fg="white")  # Cambia el color de fondo y el color del texto
+        self.btn_agregar = tk.Button(self.frame, text="Agregar guiso", command=self.agregar_guiso, bg="midnightblue", fg="white", font=("Arial", 12, "bold"), width=20)  # Azul oscuro, texto blanco
         self.btn_agregar.grid(row=5, column=0, columnspan=2, pady=10)
 
-        self.btn_recomendaciones = tk.Button(self.frame, text="Mostrar recomendaciones", command=self.mostrar_recomendaciones, bg="#008CBA", fg="white")  # Cambia el color de fondo y el color del texto
+        self.btn_recomendaciones = tk.Button(self.frame, text="Mostrar recomendaciones", command=self.mostrar_recomendaciones, bg="midnightblue", fg="white", font=("Arial", 12, "bold"), width=20)  # Azul oscuro, texto blanco
         self.btn_recomendaciones.grid(row=6, column=0, columnspan=2, pady=10)
 
-        self.btn_regresar = tk.Button(self.frame, text="Regresar", bg="gray", fg="white", command=salir_pronostico)  # Nuevo botón de regreso
-        self.btn_regresar.grid(row=7, column=0, columnspan=2, pady=10)  # Ajusta el diseño del botón de regreso
+        self.btn_regresar = tk.Button(self.frame, text="Regresar", bg="gray40", fg="white", font=("Arial", 12, "bold"), width=20, command=salir_pronostico)  # Gris oscuro, texto blanco
+        self.btn_regresar.grid(row=7, column=0, columnspan=2, pady=10)
 
         # Área de texto para recomendaciones
-        self.recomendaciones_text = tk.Text(self.frame, height=10, width=40, bg="#E6E6E6", fg="#333")  # Cambia el color de fondo y el color del texto
+        self.recomendaciones_text = tk.Text(self.frame, height=10, width=40, bg="#FFFFFF", fg="black", font=("Arial", 12))  # Fondo blanco, texto negro
         self.recomendaciones_text.grid(row=8, column=0, columnspan=2, pady=10)
 
     def mostrar_mensaje_bienvenida(self):
         fecha_actual = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Obtiene la fecha y hora actual
         mensaje_bienvenida = f"Pronostico de Ventas Optifood\nFecha y hora: {fecha_actual}"
-        self.label_bienvenida = tk.Label(self.frame, text=mensaje_bienvenida, bg="orange", fg="white", font=("Helvetica", 16))
+        self.label_bienvenida = tk.Label(self.frame, text=mensaje_bienvenida, bg="#E0E0E0", fg="black", font=("Oswald", 16, "bold"))  # Fondo gris claro, texto negro
         self.label_bienvenida.grid(row=0, column=0, columnspan=2, pady=10)
 
     def agregar_guiso(self):
@@ -158,4 +157,3 @@ def mostrar_pronostico():
 
 if __name__ == "__main__":
     mostrar_pronostico()
-
